@@ -9,6 +9,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.HashMap;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/project")
@@ -25,7 +27,13 @@ public class ProjectController {
    public ResponseEntity<?> createNewProject (@Valid @RequestBody Project project, BindingResult result){
 
       if(result.hasErrors()){
-         return new ResponseEntity<>("Invalid Object" , HttpStatus.BAD_REQUEST);
+
+         Map<String,String> errorMap = new HashMap<>();
+         result.getFieldErrors().forEach(x ->
+            errorMap.put(x.getField() , x.getDefaultMessage())
+         );
+
+         return new ResponseEntity<>(errorMap , HttpStatus.BAD_REQUEST);
       }
 
       Project project1 = projectService.saveOrUpdateProject(project);

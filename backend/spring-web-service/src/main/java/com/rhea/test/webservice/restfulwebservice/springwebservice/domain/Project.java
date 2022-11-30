@@ -17,7 +17,7 @@ public class Project {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @jakarta.validation.constraints.NotEmpty(message = "Project name is required")
+    @jakarta.validation.constraints.NotEmpty(message = "Project Name is required")
     private String projectName;
 
     @jakarta.validation.constraints.NotEmpty(message = "Project Identifier is required")
