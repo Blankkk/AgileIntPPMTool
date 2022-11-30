@@ -1,12 +1,11 @@
-package com.rhea.test.webservice.restfulwebservice.springwebservice.domain;
+package com.webservice.springwebservice.domain;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
-
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Size;
 import java.util.Date;
 
 @Entity
@@ -17,10 +16,10 @@ public class Project {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @jakarta.validation.constraints.NotEmpty(message = "Project Name is required")
+    @NotEmpty(message = "Project Name is required")
     private String projectName;
 
-    @jakarta.validation.constraints.NotEmpty(message = "Project Identifier is required")
+    @NotEmpty(message = "Project Identifier is required")
     @Size(min = 4, max = 5, message = "Please use 4 or 5 characters")
     @Column(updatable = false , unique = true)
     private String projectIdentifier;

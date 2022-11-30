@@ -1,4 +1,4 @@
-package com.rhea.test.webservice.restfulwebservice.springwebservice;
+package com.webservice.springwebservice;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
